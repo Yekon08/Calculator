@@ -6,7 +6,7 @@ const Calculator = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleData = (expression: string) => {
-    const url = `http://api.mathjs.org/v4/?expr=${encodeURIComponent(
+    const url = `https://api.mathjs.org/v4/?expr=${encodeURIComponent(
       expression
     )}`;
     fetch(url)
@@ -42,7 +42,11 @@ const Calculator = () => {
       {digit.map((digit) => (
         <button
           key={digit}
-          className={`${(digit === "=" || digit === "AC") && "spanTwo"}`}
+          className={`
+            ${(digit === "=" || digit === "AC") && "spanTwo"}
+            ${digit === "=" && "roundedRight"}
+            ${digit === "." && "roundedLeft"}
+          `}
           onClick={() => switchButton(digit)}
         >
           {digit}
