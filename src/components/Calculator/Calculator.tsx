@@ -42,10 +42,9 @@ const Calculator = () => {
       {digit.map((digit) => (
         <button
           key={digit}
-          className={`
-            ${(digit === "=" || digit === "AC") && "spanTwo"}
-            ${digit === "=" && "roundedRight"}
-            ${digit === "." && "roundedLeft"}
+          className={`${digit === "=" || digit === "AC" ? "spanTwo " : ""}${
+            digit === "=" ? "roundedRight" : ""
+          }${digit === "." ? "roundedLeft" : ""}
           `}
           onClick={() => switchButton(digit)}
         >
